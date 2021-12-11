@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>FULL THROTTLE: A Coding Project By Derek Holland</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="css/prism.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/5db21ba9c6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/site.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" />
+
+    <!-- === Nav Section === -->
+  </head>
+  <!-- h-100 (height = 100) fills the height of the browser -->
+  <body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container-fluid">
+        <img src="img/D-logo-1.svg" class="d-logo-nav" alt="" />
+        <a class="navbar-brand racing" href="index.html"
+          ><span class="ms-2">FULL THROTTLE</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="app.html">The App</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="code.html"
+                >The Code</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                target="_blank"
+                href="https://github.com/derekholland/Full-Throttle"
+                >Git Repo</a
+              >
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" target="_blank" href="#">About</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- === Main Section === -->
+    <main class="flex-shrink-0">
+      <div class="container py-4 px-5 mt-5">
+        <h2 class="border-1 border-bottom border-dark">
+          The Code for FULL THROTTLE.
+        </h2>
+        <div class="row row-cols-1 row-cols-lg-2">
+          <div class="col-lg-8">
+            <pre class="line-numbers">
+                  <code class="language-javascript">
+                    //get the values from the Page
+// starts or aka controller function
+function getValues() {
+  // get values from the page
+  let startValue = document.getElementById("startValue").value;
+  let endValue = document.getElementById("endValue").value;
+  let numbers = [];
+  // validate input
+  // convert input string to an integer
+  startValue = parseInt(startValue);
+  endValue = parseInt(endValue);
+  // check if both variables are integers
+  if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+    numbers = generateNumbers(startValue, endValue);
+    // call displayNumbers
+    displayNumbers(numbers);
+  } else {
+    alert("You must enter integers");
+  }
+}
+
+//generate numbers from the start value
+// logic function(s)
+function generateNumbers(startValue, endValue) {
+  let numbers = [];
+
+  // get all numbers from start to end
+  for (let i = startValue; i <= endValue; i++) {
+    numbers.push(i);
+  }
+  
+  return numbers;
+}
+
+// display the numbers and mark even numbers in bold
+// display or view functions
+function displayNumbers(numbers) {
+  let templateRows = "";
+
+  for (let i = 0; i < numbers.length; i++) {
+    let className = "even";
+    let number = numbers[i];
+    if (number % 2 === 0) {
+      className = "even";
+    } else {
+      className = "odd";
+    }
+    //This does render correctly with Prisim see the source
+    templateRows += `<tr><td class="${className}"">${number}</td></tr>`;
+  }
+
+  document.getElementById("results").innerHTML = templateRows;
+}
+
+            
+                  </code>
+              </pre>
+          </div>
+          <div class="col-lg-4">
+            <p>The code is structured in multiple functions starting with the getValues() function.</p>
+            <h5>The <strong>getValues()</strong> Function</h5>
+            <p>
+              The <strong>getValues()</strong> function accepts no arguments and gets the number input values from the user. The <strong>startValue</strong> variable is created by using <strong>document.getElementById()</strong> method to get the value from the input and store  this data in the variable. The next variable that is created is called <strong>endValue</strong> uses the same method to get the value from the endValue attribute of the endValue input tag. Next, the numbers array is created, this will be used later in the program.
+            </p>
+            <p>Next, the <strong>startValue</strong> and <strong>endValue</strong> variables are converted from strings into integers. An if statement is used to check if <strong>startValue</strong> and <strong>endValue</strong> variables are integers. If both values are integers two things will happen. The first action that happens is the<strong>generateNumbers()</strong> function is called with the <strong>startValue</strong> and <strong>endValue</strong> variables passed as arguments. This function will create an array that has the full range of numbers based on the user's input. Next, the <strong>displayNumbers()</strong> function is called with the <strong>numbers</strong> array being passed in as an argument. This final function ends the program by displaying all of the numbers on the page with the even numbers highlighted. In the following functions I will describe how this happens.</p>
+
+            <h5>The <strong>generateNumbers()</strong> Function</h5>
+            <p>This function takes in the <strong>startValue</strong> and <strong>endValue</strong> variables created in the <strong>getValues()</strong> function. First, an empty array called numbers is created. Next a for loop is used to get all the numbers starting with the <strong>startValue</strong> number up to and including the <strong>endValue</strong> number. During each iteration of the loop the number is pushed into the <strong>numbers</strong> array. Once the loop completes all iterations and fills the <strong>numbers</strong> array, the <strong>numbers</strong> array is returned and since this data is assigned to the numbers variable in the <strong>getValues()</strong> function, it will be used as an argument when <strong>getValues()</strong> calls <strong>displayNumbers()</strong></p>
+
+            <h5>The <strong>displayNumbers()</strong> Function</h5>
+            <p>As the name implies this function is used to display the numbers but it also highlights all of the even numbers. This function accepts one argument and is called in the <strong>getValues()</strong> function. The argument passed is the array of  numbers from the start value to the end value that was created previously in the <strong>generateNumbers()</strong> function. Next, a for loop runs. This loop runs for the length of the array. During each iteration a variable called <strong>className</strong> is created and initialized to the value of the string "even". Another variable called <strong>number</strong> is also created and assigned the value of the current number from the numbers array during that iteration (<strong>numbers[i]</strong>).</p>
+              
+              <p>Next an if statement runs to determine if the current number of that iteration is even. If the number is even, the variable <strong>className</strong> remains assigned the string "even." However,  if the number is not even <strong>className</strong> gets assigned the respective "string." Next, <strong>templateRows</strong> variable gets the table row and table data with the template literal comprised of the <strong>className</strong> wedged in between the brackets. The className refers to a custom CSS rule. This his how the even numbers are highlighted. Finally, after the loop creates the table data for each value from the  <strong>numbers</strong> array, the data is embedded into the HTML of the page by setting the innerHTML to the the <strong>templateRows</strong> variable. The final result is a list of numbers from the range of numbers that the user specified. This gets displayed on the page with all the even numbers highlighted.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- === Footer Section === -->
+    <footer class="footer mt-auto py-3">
+      <div class="container-fluid">
+        <!-- lg and above 3 columns, below large 1 column -->
+        <div class="row row-cols-1 row-cols-lg-3 gy-2">
+          <!-- column 1 email -->
+          <div
+            class="
+              col
+              order-lg-first order-last
+              text-light
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
+            <div>
+              <span class="text-muted">&copy;2021</span> Derek Holland |
+              derekhollandwebdev@gmail.com
+            </div>
+          </div>
+          <!-- column 2 logo -->
+          <div class="col d-flex align-items-center justify-content-center">
+            <img
+              class="d-logo"
+              src="img/D-logo-1.svg"
+              alt="Derek Holland logo"
+            />
+          </div>
+          <!-- column 3 social icons -->
+          <div class="col d-flex align-items-center justify-content-center">
+            <div class="row">
+              <div class="col social">
+                <a href="https://linkedin.com/in/derek-holland-93ab0617b/" target="_blank"
+                  ><i class="fab fa-linkedin fa-2x"></i
+                ></a>
+              </div>
+              <div class="col social">
+                <a href="https://github.com/derekholland" target="_blank"
+                  ><i class="fab fa-github fa-2x"></i
+                ></a>
+              </div>
+              <div class="col social">
+                <!-- <a href="#" target="_blank"
+                  ><i class="fab fa-twitter fa-2x"></i
+                ></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/site.js"></script>
+    <!-- Prism JS -->
+    <script src="js/prism.js"></script>
+    <script>
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        "remove-trailing": true,
+        "remove-indent": true,
+        "left-trim": true,
+        "right-trim": true,
+      });
+    </script>
+  </body>
+</html>
