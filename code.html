@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
-    <title>FULL THROTTLE: A Coding Project By Derek Holland</title>
+    <title>Rewind: A Coding Project By Derek Holland</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome -->
@@ -41,8 +41,8 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
       <div class="container-fluid">
         <img src="img/D-logo-1.svg" class="d-logo-nav" alt="" />
-        <a class="navbar-brand racing" href="index.html"
-          ><span class="ms-2">FULL THROTTLE</span></a
+        <a class="navbar-brand rewind" href="index.html"
+          ><span class="ms-2 text-rewind">REWIND</span></a
         >
         <button
           class="navbar-toggler"
@@ -72,7 +72,7 @@
               <a
                 class="nav-link"
                 target="_blank"
-                href="https://github.com/derekholland/Full-Throttle"
+                href="https://github.com/derekholland/Rewind"
                 >Git Repo</a
               >
             </li>
@@ -86,86 +86,102 @@
     <!-- === Main Section === -->
     <main class="flex-shrink-0">
       <div class="container py-4 px-5 mt-5">
-        <h2 class="border-1 border-bottom border-dark">
-          The Code for FULL THROTTLE.
-        </h2>
+        <h2 class="border-1 border-bottom border-dark">The Code for REWIND.</h2>
         <div class="row row-cols-1 row-cols-lg-2">
           <div class="col-lg-8">
             <pre class="line-numbers">
                   <code class="language-javascript">
-                    //get the values from the Page
-// starts or aka controller function
-function getValues() {
-  // get values from the page
-  let startValue = document.getElementById("startValue").value;
-  let endValue = document.getElementById("endValue").value;
-  let numbers = [];
-  // validate input
-  // convert input string to an integer
-  startValue = parseInt(startValue);
-  endValue = parseInt(endValue);
-  // check if both variables are integers
-  if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-    numbers = generateNumbers(startValue, endValue);
-    // call displayNumbers
-    displayNumbers(numbers);
-  } else {
-    alert("You must enter integers");
-  }
-}
-
-//generate numbers from the start value
-// logic function(s)
-function generateNumbers(startValue, endValue) {
-  let numbers = [];
-
-  // get all numbers from start to end
-  for (let i = startValue; i <= endValue; i++) {
-    numbers.push(i);
-  }
-  
-  return numbers;
-}
-
-// display the numbers and mark even numbers in bold
-// display or view functions
-function displayNumbers(numbers) {
-  let templateRows = "";
-
-  for (let i = 0; i < numbers.length; i++) {
-    let className = "even";
-    let number = numbers[i];
-    if (number % 2 === 0) {
-      className = "even";
-    } else {
-      className = "odd";
-    }
-    //This does render correctly with Prisim see the source
-    templateRows += `<tr><td class="${className}"">${number}</td></tr>`;
-  }
-
-  document.getElementById("results").innerHTML = templateRows;
-}
-
+                    
+                    // get the string from the page
+                    // Controller Function
+                    function getValue() {
+                      // add invisible class to alert
+                      document.getElementById("alert").classList.add("invisible");
+                      let userString = document.getElementById("userString").value;
+                      let revString = reverseString(userString);
+                      displayString(revString);
+                    }
+                    //Reverse the string
+                    // logic Function
+                    function reverseString(userString) {
+                      let revString = [];
+                      // reverse a string
+                      for (let i = userString.length - 1; i >= 0; i--) {
+                        revString += userString[i];
+                      }
+                      return revString;
+                    }
+                    
+                    // display the reversed string to the user
+                    // View Function
+                    function displayString(revString) {
+                      // write message to the page
+                      document.getElementById(
+                        "msg"
+                      ).innerHTML = `Your string reversed is : ${revString}`;
+                      // show the alert box
+                      document.getElementById("alert").classList.remove("invisible");
+                    }
+                    
             
                   </code>
               </pre>
           </div>
           <div class="col-lg-4">
-            <p>The code is structured in multiple functions starting with the getValues() function.</p>
-            <h5>The <strong>getValues()</strong> Function</h5>
+            <p>The code in structured into three functions.</p>
+            <h5><strong>getValue() Function</strong></h5>
             <p>
-              The <strong>getValues()</strong> function accepts no arguments and gets the number input values from the user. The <strong>startValue</strong> variable is created by using <strong>document.getElementById()</strong> method to get the value from the input and store  this data in the variable. The next variable that is created is called <strong>endValue</strong> uses the same method to get the value from the endValue attribute of the endValue input tag. Next, the numbers array is created, this will be used later in the program.
+              This is the main controller function that calls the other
+              functions in the program. This function is an event the "Reverse
+              Me" button listens for. In the HTML document of this page there is
+              an event listener attached to the "Reverse Me" button. After the
+              user enters a string in the input box and presses the "Reverse Me"
+              button, the
+              <strong>getValue()</strong>function is called.This functions
+              accepts no arguments. The function starts by adding a CSS class to
+              the div element with an alert id. Adding this class hides the
+              element from the user. Next, the
+              <strong>userString</strong> variable is created. This variable
+              stores the value of the string the user inputs. Another variable
+              named <strong>revString</strong> is created. This variable calls
+              the <strong>reverseString()</strong> function and stores the
+              returned value of that function. Now that we have the reversed
+              String we can pass that to the
+              <strong>displayString()</strong> function to show the reversed
+              string to the user.
             </p>
-            <p>Next, the <strong>startValue</strong> and <strong>endValue</strong> variables are converted from strings into integers. An if statement is used to check if <strong>startValue</strong> and <strong>endValue</strong> variables are integers. If both values are integers two things will happen. The first action that happens is the<strong>generateNumbers()</strong> function is called with the <strong>startValue</strong> and <strong>endValue</strong> variables passed as arguments. This function will create an array that has the full range of numbers based on the user's input. Next, the <strong>displayNumbers()</strong> function is called with the <strong>numbers</strong> array being passed in as an argument. This final function ends the program by displaying all of the numbers on the page with the even numbers highlighted. In the following functions I will describe how this happens.</p>
 
-            <h5>The <strong>generateNumbers()</strong> Function</h5>
-            <p>This function takes in the <strong>startValue</strong> and <strong>endValue</strong> variables created in the <strong>getValues()</strong> function. First, an empty array called numbers is created. Next a for loop is used to get all the numbers starting with the <strong>startValue</strong> number up to and including the <strong>endValue</strong> number. During each iteration of the loop the number is pushed into the <strong>numbers</strong> array. Once the loop completes all iterations and fills the <strong>numbers</strong> array, the <strong>numbers</strong> array is returned and since this data is assigned to the numbers variable in the <strong>getValues()</strong> function, it will be used as an argument when <strong>getValues()</strong> calls <strong>displayNumbers()</strong></p>
+            <h5>The <strong>reverseString()</strong> Function.</h5>
 
-            <h5>The <strong>displayNumbers()</strong> Function</h5>
-            <p>As the name implies this function is used to display the numbers but it also highlights all of the even numbers. This function accepts one argument and is called in the <strong>getValues()</strong> function. The argument passed is the array of  numbers from the start value to the end value that was created previously in the <strong>generateNumbers()</strong> function. Next, a for loop runs. This loop runs for the length of the array. During each iteration a variable called <strong>className</strong> is created and initialized to the value of the string "even". Another variable called <strong>number</strong> is also created and assigned the value of the current number from the numbers array during that iteration (<strong>numbers[i]</strong>).</p>
-              
-              <p>Next an if statement runs to determine if the current number of that iteration is even. If the number is even, the variable <strong>className</strong> remains assigned the string "even." However,  if the number is not even <strong>className</strong> gets assigned the respective "string." Next, <strong>templateRows</strong> variable gets the table row and table data with the template literal comprised of the <strong>className</strong> wedged in between the brackets. The className refers to a custom CSS rule. This his how the even numbers are highlighted. Finally, after the loop creates the table data for each value from the  <strong>numbers</strong> array, the data is embedded into the HTML of the page by setting the innerHTML to the the <strong>templateRows</strong> variable. The final result is a list of numbers from the range of numbers that the user specified. This gets displayed on the page with all the even numbers highlighted.</p>
+            <p>
+              This function starts by assigning an empty array to the
+              <strong>revString</strong> variable. This array wil be used to
+              store the reversed string. A for loop runs next to reverse the
+              string. This happens by setting the index of the for loop to the
+              last index of the string in <strong>userString</strong>. Now the
+              loop will decrement down all the way to zero and store the current
+              character of <strong>userString</strong> into the
+              <strong>revString</strong> array on each iteration. This is how
+              the the empty array becomes a copy of the string but in reverse
+              order. The final step of the function returns the reversed string
+              that was just created. Now back in the
+              <strong>getValue()</strong> function this value is stored in the
+              revString variable.
+            </p>
+
+            <h5>The <strong>displayString()</strong> Function</h5>
+            <p>
+              This function displays the reversed string to the user. By using
+              <strong>document.getElementById()</strong> we can target the
+              element with the "msg" id and set the inner HTML to the message we
+              want to display. Inside of the template literal the variable
+              <strong>revString</strong> is used to show the final reversed
+              string. To make all of this appear on the page we have to remove
+              the CSS class called invisible. This can be accomplished by
+              targeting the element with the alert class and removing the
+              invisible class from the class list. Now the user can see the
+              reversed string!
+            </p>
           </div>
         </div>
       </div>
@@ -204,7 +220,9 @@ function displayNumbers(numbers) {
           <div class="col d-flex align-items-center justify-content-center">
             <div class="row">
               <div class="col social">
-                <a href="https://linkedin.com/in/derek-holland-93ab0617b/" target="_blank"
+                <a
+                  href="https://linkedin.com/in/derek-holland-93ab0617b/"
+                  target="_blank"
                   ><i class="fab fa-linkedin fa-2x"></i
                 ></a>
               </div>
@@ -214,9 +232,9 @@ function displayNumbers(numbers) {
                 ></a>
               </div>
               <div class="col social">
-                <!-- <a href="#" target="_blank"
+                <a href="#" target="_blank"
                   ><i class="fab fa-twitter fa-2x"></i
-                ></a> -->
+                ></a>
               </div>
             </div>
           </div>

@@ -1,51 +1,30 @@
-//get the values from the Page
-// starts or aka controller function
-function getValues() {
-  // get values from the page
-  let startValue = document.getElementById("startValue").value;
-  let endValue = document.getElementById("endValue").value;
-  let numbers = [];
-  // validate input
-  // convert input string to an integer
-  startValue = parseInt(startValue);
-  endValue = parseInt(endValue);
-  // check if both variables are integers
-  if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-    numbers = generateNumbers(startValue, endValue);
-    // call displayNumbers
-    displayNumbers(numbers);
-  } else {
-    alert("You must enter integers");
+// get the string from the page
+// Controller Function
+function getValue() {
+  // add invisible class to alert
+  document.getElementById("alert").classList.add("invisible");
+  let userString = document.getElementById("userString").value;
+  let revString = reverseString(userString);
+  displayString(revString);
+}
+//Reverse the string
+// logic Function
+function reverseString(userString) {
+  let revString = [];
+  // reverse a string
+  for (let i = userString.length - 1; i >= 0; i--) {
+    revString += userString[i];
   }
+  return revString;
 }
 
-//generate numbers from the start value
-// logic function(s)
-function generateNumbers(startValue, endValue) {
-  let numbers = [];
-
-  // get all numbers from start to end
-  for (let i = startValue; i <= endValue; i++) {
-    numbers.push(i);
-  }
-  return numbers;
-}
-
-// display the numbers and mark even numbers in bold
-// display or view functions
-function displayNumbers(numbers) {
-  let templateRows = "";
-
-  for (let i = 0; i < numbers.length; i++) {
-    let className = "even";
-    let number = numbers[i];
-    if (number % 2 === 0) {
-      className = "even";
-    } else {
-      className = "odd";
-    }
-    templateRows += `<tr><td class="${className}"">${number}</td></tr>`;
-  }
-
-  document.getElementById("results").innerHTML = templateRows;
+// display the reversed string to the user
+// View Function
+function displayString(revString) {
+  // write message to the page
+  document.getElementById(
+    "msg"
+  ).innerHTML = `Your string reversed is : ${revString}`;
+  // show the alert box
+  document.getElementById("alert").classList.remove("invisible");
 }

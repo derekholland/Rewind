@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #1d5888;
-  --secondary-color: #007bff;
+  --primary-color: #292929;
+  --secondary-color: #8c52ff;
   --dark-color: #292929;
   --white-color: #ebf0ec;
 }
@@ -92,12 +92,13 @@ pre[class*="language-"] {
   word-wrap: break-word;
 }
 
-.racing {
-  font-family: "Racing Sans One", cursive;
+.rewind {
+  font-family: "Press Start 2P", cursive;
 }
+
 .d-logo {
-  width: 60px;
-  height: 60px;
+  width: 43px;
+  height: 43px;
 }
 
 .d-logo-nav {
@@ -108,4 +109,8 @@ pre[class*="language-"] {
 .logobyname {
   width: 35px;
   height: 35px;
+}
+
+.text-rewind {
+  font-size: 1rem;
 }
